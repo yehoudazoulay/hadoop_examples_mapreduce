@@ -1,7 +1,7 @@
 package com.opstty.job;
 
-import com.opstty.mapper.DistrictMapper;
-import com.opstty.reducer.DistrictReducer;
+import com.opstty.mapper.MaxHeightMapper;
+import com.opstty.reducer.MaxHeightReducer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
@@ -11,19 +11,19 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 
-public class District {
+public class MaxHeight {
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
         String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
         if (otherArgs.length < 2) {
-            System.err.println("Usage: district <in> [<in>...] <out>");
+            System.err.println("Usage: maxheight <in> [<in>...] <out>");
             System.exit(2);
         }
-        Job job = Job.getInstance(conf, "district");
+        Job job = Job.getInstance(conf, "maxheight");
         job.setJarByClass(MaxHeight.class);
-        job.setMapperClass(DistrictMapper.class);
-        job.setCombinerClass(DistrictReducer.class);
-        job.setReducerClass(DistrictReducer.class);
+        job.setMapperClass(MaxHeightMapper.class);
+        job.setCombinerClass(MaxHeightReducer.class);
+        job.setReducerClass(MaxHeightReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
         for (int i = 0; i < otherArgs.length - 1; ++i) {
