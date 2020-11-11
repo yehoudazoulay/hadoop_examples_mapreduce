@@ -72,7 +72,7 @@ Here, we writed a MapReduce job that displays the list of different species tree
 20/11/10 23:38:57 INFO mapreduce.Job:  map 100% reduce 100%
 20/11/10 23:38:58 INFO mapreduce.Job: Job job_1603290159664_3707 completed successfully
 ```
-This output shows us the different types of tree species ( first column )
+This output shows us the different types of tree species ( first column ).
 
 ```bat
 [yazoulay@hadoop-edge01 ~]$ hdfs dfs -cat /user/yazoulay/showspec02/part-r-00000
